@@ -46,6 +46,7 @@ def test_create_booking():
             },
         "additionalneeds": "Breakfast"
     }
+
     res = requests.post(BASE_LINK + 'booking', headers=header, json=booking_details)
     assert res.json()['booking']['firstname'] == 'Adilbek'
     assert res.json()['booking']['lastname'] == 'Konysbek'
@@ -56,20 +57,14 @@ def test_create_booking():
     assert res.json()['booking']['additionalneeds'] == 'Breakfast'
     assert 'bookingid' in res.json()
 
-@pytest.mark.parametrize('id', ['840'])
+
+@pytest.mark.parametrize('id', ['1'])
 def test_get_bookings(id):
-    res = requests.get(BASE_LINK + 'booking/' + id)
-    expected_json = {
-        'firstname': 'Bob',
-        'lastname': 'Smith',
-         'totalprice': 111,
-         'depositpaid': True,
-         'bookingdates':
-             {
-                 'checkin': '2018-01-01',
-                 'checkout': '2019-01-01'
-             },
-         'additionalneeds': 'Breakfast'
-    }
+    res = requests.get(BASE_LINK + 'booking/' + str(id))
+    expected_json = {'bookingdates': {'checkin': '2023-02-02', 'checkout': '2023-02-06'},
+                     'depositpaid': True,
+                     'firstname': 'Jim',
+                     'lastname': 'Jones',
+                     'totalprice': 594}
 
     assert res.json() == expected_json
