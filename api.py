@@ -46,6 +46,7 @@ def test_create_booking():
             },
         "additionalneeds": "Breakfast"
     }
+
     res = requests.post(BASE_LINK + 'booking', headers=header, json=booking_details)
     assert res.json()['booking']['firstname'] == 'Adilbek'
     assert res.json()['booking']['lastname'] == 'Konysbek'
@@ -56,7 +57,6 @@ def test_create_booking():
     assert res.json()['booking']['additionalneeds'] == 'Breakfast'
     assert 'bookingid' in res.json()
 
-#Тест закомментирован, так как на ресурсе постоянно изменяется id
 
 #@pytest.mark.parametrize('id', ['840'])
 #def test_get_bookings(id):
