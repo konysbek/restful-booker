@@ -56,20 +56,22 @@ def test_create_booking():
     assert res.json()['booking']['additionalneeds'] == 'Breakfast'
     assert 'bookingid' in res.json()
 
-@pytest.mark.parametrize('id', ['840'])
-def test_get_bookings(id):
-    res = requests.get(BASE_LINK + 'booking/' + id)
-    expected_json = {
-        'firstname': 'Bob',
-        'lastname': 'Smith',
-         'totalprice': 111,
-         'depositpaid': True,
-         'bookingdates':
-             {
-                 'checkin': '2018-01-01',
-                 'checkout': '2019-01-01'
-             },
-         'additionalneeds': 'Breakfast'
-    }
+#Тест закомментирован, так как на ресурсе постоянно изменяется id
 
-    assert res.json() == expected_json
+#@pytest.mark.parametrize('id', ['840'])
+#def test_get_bookings(id):
+#    res = requests.get(BASE_LINK + 'booking/' + id)
+#    expected_json = {
+#        'firstname': 'Bob',
+#        'lastname': 'Smith',
+#         'totalprice': 111,
+#         'depositpaid': True,
+#         'bookingdates':
+#             {
+#                 'checkin': '2018-01-01',
+#                 'checkout': '2019-01-01'
+#             },
+#         'additionalneeds': 'Breakfast'
+#    }
+#
+#    assert res.json() == expected_json
